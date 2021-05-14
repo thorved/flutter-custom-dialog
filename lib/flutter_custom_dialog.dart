@@ -235,8 +235,7 @@ class YYDialog {
     );
   }
 
-  YYDialog circularProgress(
-      {required padding, backgroundColor, valueColor, strokeWidth}) {
+  YYDialog circularProgress({required padding, backgroundColor, valueColor, strokeWidth}) {
     return this.widget(Padding(
       padding: padding,
       child: CircularProgressIndicator(
@@ -468,9 +467,8 @@ class CustomDialog {
       barrierDismissible: _barrierDismissible ?? true,
       barrierLabel: "",
       transitionDuration: _duration ?? Duration(milliseconds: 250),
-      transitionBuilder: _transitionsBuilder ?? _buildMaterialDialogTransitions as Widget Function(BuildContext, Animation<double>, Animation<double>, Widget)?,
-      pageBuilder: (BuildContext buildContext, Animation<double> animation,
-          Animation<double> secondaryAnimation) {
+      transitionBuilder: _transitionsBuilder ?? _buildMaterialDialogTransitions,
+      pageBuilder: (BuildContext buildContext, Animation<double> animation, Animation<double> secondaryAnimation) {
         return Builder(
           builder: (BuildContext context) {
             return _child;
@@ -480,11 +478,8 @@ class CustomDialog {
     );
   }
 
-  Widget? _buildMaterialDialogTransitions(
-      BuildContext context,
-      Animation<double> animation,
-      Animation<double> secondaryAnimation,
-      Widget child) {
+  Widget _buildMaterialDialogTransitions(
+      BuildContext context, Animation<double> animation, Animation<double> secondaryAnimation, Widget child) {
     Animation<Offset> custom;
     switch (_gravity) {
       case Gravity.top:
